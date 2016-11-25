@@ -162,7 +162,9 @@ class MYSQL:
 
     def close(self):
         if self.connection:
-            return self.connection.close()
+            result = self.connection.close()
+            self.connection = None
+            return result
 
     def join_field_value(self, data, glue = ', '):
         sql = comma = ''
